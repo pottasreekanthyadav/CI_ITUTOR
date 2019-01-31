@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>http://itsmytutor.com/</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/signup</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/contact</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/activity</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/tuition-center</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/tutor-list</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/about-us</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/tutor/new_tutor_page</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/faq</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/user/forgot-request</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/Businessdirectory_controller/listing_business/Fun-Places/MTA=</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/Businessdirectory_controller/listing_business/Coaching-Center/MQ==</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/tutor/profile/4</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/tutor/profile/20</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/registration/signup_load</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/Businessdirectory_controller/business_details/Fun-Places/Sateesh-Acadmy/MzA=</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/Businessdirectory_controller/category_institute</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/Businessdirectory_controller/business_details/Coaching-Center/Sateesh-Acadmy/MzA=</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://itsmytutor.com/Businessdirectory_controller/business_details/Coaching-Center/nasrest-it/Mjk=</loc>
+  <lastmod>2018-09-11T09:05:15+00:00</lastmod>
+  <changefreq>always</changefreq>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>

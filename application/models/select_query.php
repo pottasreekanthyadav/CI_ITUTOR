@@ -1,0 +1,1 @@
+select tutor.*,cat.category_name from rl_tutor_category_tbl rcat inner join rl_category_tbl cat on cat.category_id=rcat.category_id inner join rl_tutor_tbl tutor on tutor.user_id=rcat.user_id

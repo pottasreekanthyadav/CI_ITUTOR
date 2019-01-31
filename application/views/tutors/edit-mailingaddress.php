@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+     <title><?php echo TITLE_PATH;?></title>
+
+
+<!-- Bootstrap -->
+<link href="<?php echo MYCSS_PATH;?>bootstrap.min.css" type="text/css" rel="stylesheet"  />
+<link rel="shortcut icon" href="<?php  echo MYIMAGES_PATH;?>favicon.png" size="32*32">
+<!--custom css-->
+  <link href="<?php echo MYCSS_PATH;?>custom.css" type="text/css" rel="stylesheet"  />
+ <!--menu-->
+  <link href="<?php echo MYCSS_PATH;?>menu.css" type="text/css" rel="stylesheet"  />
+   <!-- Icomoon Icon Fonts-->
+  <link rel="stylesheet" href="<?php echo MYCSS_PATH;?>icomoon.css">
+  <link href="<?php echo MYCSS_PATH;?>font-awesome.min.css" rel="stylesheet" />
+      
+    <style>
+        .register .input-group .input-group-addon{border: 1px solid #ccc;border-right: none;}
+        .register .input-group {padding: 9px 2px;}
+        .register .input-group .form-control{height: 45px !important}
+        .pad5{    padding: 5px 21px 6px 0px !important}
+        .btn-label {border: 1px solid #fff;padding: 10px 10px}
+        .btn-facebook { color: #fff!important;background-color: #3b5998!important;}
+        .btn-googleplus { color: #fff!important;background-color: #dd4b39!important;}
+        .mt0{margin-top: 0px}
+        .side-menu ul li a{color: #fff; font-size: 13px;text-decoration: none}
+        .mt9{margin-top: 9px}
+        .bootstrap-tagsinput { border: 1px solid #e4e7ea;border-radius: 0px; box-shadow: none; display: block; padding: 7px 12px;}
+        .labell-bg {background: #fff;color: #bbb;border: 1px solid;}
+        .btn-bg{background-color: #ed3f40;color: #fff}
+      </style>
+  </head>
+  <body class="bg-wh">
+    <?php //echo validation_errors();?>
+   <?php $this->load->view('includes/header'); ?>
+   <div class="clearfix"></div>
+
+  <!--section dashboard start-->
+ <section>
+      <div class="bg-back container-fluid"  style="background-image:url('<?php echo base_url();?>assets/images/bg-back.jpg')">
+      <div class="container">
+      <?php $this->load->view("tutors/tutor-dash-sidebar");?>
+
+      <div class="col-sm-10">
+          <div class="col-sm-12 inner-bg no-padd m-t-10">
+  <?php 
+           $success = $this->session->flashdata('success');
+           if(!empty($success)){
+           echo $success; 
+               } 
+                ?>
+ <?php  
+ $fail =$this->session->flashdata('failure');
+ if(!empty($fail)){
+   echo $fail;
+    }
+ ?>
+
+           <h4 class="title-hd"><strong>Delivery Address</strong></h4>
+        
+          
+          <div class="col-sm-10 col-sm-offset-1">
+            <?php echo form_open('tutor/change_mailing_address',array('id'=>'fromdelivery','name'=>'fromdelivery')); ?>
+                <div class="clearfix">&nbsp;</div>
+              <div class="form-group col-sm-6">
+                <label> Name </label>
+                <input type="text" name="recivername" id="recivername" class="form-control no-bod-rad" placeholder="Enter Name" maxlength="100" value="<?php echo $mailingaddress->name; ?>">
+                <span><?php echo form_error('name'); ?></span>
+              </div>
+               <div class="form-group col-sm-6">
+                 <label> Name on Card </label>
+                <input type="text" name="nameoncard" id="nameoncard" class="form-control no-bod-rad" placeholder="Enter name on card" autocomplete="off" value="<?php echo $mailingaddress->nameoncard; ?>">
+                 <span><?php echo form_error('nameoncard'); ?></span>
+              </div>
+              <input type="hidden" name="editid" id="editid" value="<?php $mailingaddress->id;?>">
+              <div class="clearfix">&nbsp;</div>
+                <div class="form-group col-sm-6">
+                <label> Mobile </label>
+                <input type="text" name="recivermobile" id="recivermobile"  class="form-control no-bod-rad" placeholder="Enter Mobile" autocomplete="off" maxlength="10" value="<?php echo $mailingaddress->mobile; ?>">
+                <span><?php echo form_error('mobile'); ?></span>
+              </div>
+                <div class="form-group col-sm-6">
+               <label> Email </label>
+                <input type="text" name="reciveremail" id="reciveremail" class="form-control no-bod-rad" placeholder="Enter Email" autocomplete="off" value="<?php echo $mailingaddress->email; ?>">
+                <span><?php echo form_error('email'); ?></span>              
+              </div>
+                <div class="clearfix">&nbsp;</div>
+               <div class="form-group col-sm-6">
+                <label> State </label>
+                <input type="text" name="state" id="state" class="form-control no-bod-rad" placeholder="Enter State" autocomplete="off" maxlength="100" value="<?php echo $mailingaddress->state; ?>">
+                <span><?php echo form_error('state'); ?></span>
+              </div>
+               <div class="form-group col-sm-6">
+                <label> City/District </label>
+                <input type="text" id="city" name="city" class="form-control no-bod-rad" placeholder="Enter City/District" autocomplete="off" maxlength="100"  value="<?php echo $mailingaddress->city; ?>">
+                <span><?php echo form_error('city'); ?></span>
+              </div>
+                <div class="clearfix">&nbsp;</div>
+                <div class="form-group col-sm-6">
+                   <label> Pincode </label>
+                <input type="text" name="pincode" id="pincode" class="form-control no-bod-rad" placeholder="Enter Pincode" autocomplete="off" maxlength="6" minlength="6" value="<?php echo $mailingaddress->pincode; ?>">
+                <span><?php echo form_error('pincode'); ?></span>
+              </div>
+              <div class="form-group col-sm-6">
+               <label> Landmark </label>
+                <input type="text" name="landmark" id="landmark" class="form-control no-bod-rad" placeholder="Enter Landmark" autocomplete="off" maxlength="100" value="<?php echo $mailingaddress->landmark; ?>">
+                <span><?php echo form_error('landmark'); ?></span>
+              </div>
+                <div class="clearfix">&nbsp;</div>
+               <div class="form-group col-sm-12">
+                <label> Address </label>
+                <textarea class="form-control no-bod-rad" id="address" name="address" rows="3" placeholder="Enter Name"><?php echo $mailingaddress->address; ?></textarea> 
+                 <span><?php echo form_error('address'); ?></span>
+              </div>
+               <div class="clearfix">&nbsp;</div>
+              <div class="col-sm-12 text-center">
+                <button class="btn btn-blue no-bod-rad col-wh"> &nbsp;  Submit &nbsp; </button>
+              </div>
+               <div class="clearfix">&nbsp;</div>
+             <?php echo form_close(); ?>
+              </div>
+            </div>
+          </div>
+        </div>
+            <div class="clearfix">&nbsp;</div>  <div class="clearfix">&nbsp;</div>  <div class="clearfix">&nbsp;</div><div class="clearfix">&nbsp;</div><div class="clearfix">&nbsp;</div>
+     </div>
+          </section>
+                <!--section dashboard end-->
+      <?php $this->load->view('includes/modal'); ?>
+ <div class="clearfix"></div>
+ <?php $this->load->view('includes/footer'); ?>
+   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!--    <script src="<?php echo MYJS_PATH;?>/jquery.min.js"></script>-->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="<?php echo MYJS_PATH;?>/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo MYJS_PATH;?>/menu.js"></script>
+      
+ <script type="text/javascript">
+      function navigate_now(){
+        location.href="<?php base_url();?>payment/1";
+      }
+    </script>
+  </body>
+</html>
+<script type="text/javascript">
+    $("#fromdelivery").on("submit",function(){
+      var flag =true;
+    var patternmobile =/^[6-9]{1}[0-9]{9}$/;
+    var patternemail =/^[a-zA-Z0-9][a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    var patternname =/^[A-Za-z ]*$/;
+    var patternpincode =/^[1-9]{1}[0-9]{5}$/;
+    //var patterngmap =/^[A-Za-z ,#-:]*$/;
+    var recivername = $("#recivername").val().trim();
+    var reciveremail = $("#reciveremail").val().trim();
+    var recivermobile = $("#recivermobile").val().trim();
+    var city = $("#city").val().trim();
+    var pincode = $("#pincode").val().trim();
+    var state = $("#state").val().trim();
+    var landmark = $("#landmark").val().trim();
+    var nameoncard = $("#nameoncard").val().trim();
+    var address = $("textarea#address").val();
+    if(recivername=="" || recivername==0){
+      flag =false;
+      $("#recivername").css('border','1px solid red');
+    }else{
+      $("#recivername").css('border','');
+    }
+    if(reciveremail=="" || reciveremail==0){
+      flag =false;
+      $("#reciveremail").css('border','1px solid red');
+    }else{
+      $("#reciveremail").css('border','');
+    }
+    if(recivermobile=="" || recivermobile==0){
+      flag =false;
+      $("#recivermobile").css('border','1px solid red');
+    }else{
+      $("#recivermobile").css('border','');
+    }
+    if(city=="" || city==0){
+      flag =false;
+      $("#city").css('border','1px solid red');
+    }else{
+      $("#city").css('border','');
+    }
+    if(pincode=="" || pincode==0){
+      flag =false;
+      $("#pincode").css('border','1px solid red');
+    }else{
+      $("#pincode").css('border','');
+    }
+    if(state=="" || state==0){
+      flag =false;
+      $("#state").css('border','1px solid red');
+    }else{
+      $("#state").css('border','');
+    }
+    if(nameoncard=="" || nameoncard==0){
+      flag =false;
+      $("#nameoncard").css('border','1px solid red');
+    }else{
+      $("#nameoncard").css('border','');
+    }
+    if(landmark=="" || landmark==0){
+      flag =false;
+      $("#landmark").css('border','1px solid red');
+    }else{
+      $("#landmark").css('border','');
+    }
+    if(address=="" || address==0){
+      flag =false;
+      $("#address").css('border','1px solid red');
+    }else{
+      $("#address").css('border','');
+    }
+    /*if(flag==true){
+      this.fromdelivery.submit();
+    }*/
+    /* if(demotime!="" && !demodatetimepattern.test(demotime)){
+    $("#demotime").css('border','1px solid red').focus();
+    str = false;
+      }*/
+       if(recivername!="" && !patternname.test(recivername)){
+    $("#recivername").css('border','1px solid red').focus();
+    flag = false;
+      }
+      if(recivermobile!="" && !patternmobile.test(recivermobile)){
+    $("#recivermobile").css('border','1px solid red').focus();
+    flag = false;
+      }
+      if(reciveremail!="" && !patternemail.test(reciveremail)){
+    $("#reciveremail").css('border','1px solid red').focus();
+    flag = false;
+      }
+      if(pincode!="" && !patternpincode.test(pincode)){
+    $("#pincode").css('border','1px solid red').focus();
+    flag = false;
+      }
+      
+      if(city!="" && !patternname.test(city)){
+    $("#city").css('border','1px solid red').focus();
+    flag = false;
+      }
+       if(state!="" && !patternname.test(state)){
+    $("#state").css('border','1px solid red').focus();
+    flag = false;
+      }
+      if(landmark!="" && !patternname.test(landmark)){
+    $("#landmark").css('border','1px solid red').focus();
+    flag = false;
+      }
+      if(nameoncard!="" && !patternname.test(nameoncard)){
+    $("#nameoncard").css('border','1px solid red').focus();
+    flag = false;
+      }
+      /*if(address!="" && !patterngmap.test(address)){
+    $("#address").css('border','1px solid red').focus();
+    flag = false;
+      }*/
+
+    return flag;
+    });
+</script>

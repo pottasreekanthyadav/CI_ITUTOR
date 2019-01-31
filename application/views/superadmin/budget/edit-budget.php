@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Its My Tutor | Dashboard</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" type="text/css" href="<?php echo SUPER_CSS_PATH ; ?>bootstrap.min.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?php echo SUPER_CSS_PATH ; ?>font-awesome.min.css">
+  <!-- Ionicons -->
+ <link rel="stylesheet" href="<?php echo SUPER_CSS_PATH ; ?>ionicons.min.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="<?php echo SUPER_CSS_PATH ; ?>jquery-jvectormap-1.2.2.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?php echo SUPER_CSS_PATH ; ?>gharaahaar1.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="<?php echo SUPER_CSS_PATH ; ?>_all-skins.min.css">
+<link rel="shortcut icon" href="<?php  echo MYIMAGES_PATH;?>favicon.png" size="32*32">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <style type="text/css">textarea{resize: none;}</style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+<?php $this->load->view("superadmin/includes/header.php");?>
+ <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+   <?php $this->load->view("superadmin/includes/sidebar.php");?>
+    <!-- /.sidebar -->
+  </aside>
+        <div class="col-md-12"> 
+        <?php if($this->session->flashdata('success')) { ?>
+        <div class="alert alert-success" id="temp">
+        <?php echo $this->session->flashdata('success'); ?>
+        </div>
+        <?php } ?>
+        <?php if($this->session->flashdata('failure')) { ?>
+        <div class="alert alert-danger" id="temp">
+        <?php echo $this->session->flashdata('failure'); ?>
+        </div>
+        <?php } ?>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Add Budget
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </section>
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+           <?php //print_r($budgetedit); ?>
+            <a href="<?php echo SUPER_ADMIN_FOLDER_PATH;?>budget_controller/list_budget" class="btn btn-primary pull-right">Manage Budget</a>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <?php
+                            $form_attributes = array('id' => 'add_budget', 'name' => 'add_budget');
+                            echo form_open('superadmin/budget_controller/change_budget', $form_attributes);
+                         ?>
+               <?php
+               if($msg=$this->session->flashdata('msg'))
+               {
+                ?>
+                <span class="text-danger">
+                <?php
+                    echo $msg;
+                    ?>
+                </span>
+                <?php
+               }
+               ?>
+            <div class="box-body">
+      <div class="col-md-4">
+              <div class="form-group">
+                <?php echo form_label('Category');
+                            ?>
+                            <span style="color:red; " id="class_err"> *<?php //echo form_error('tutor_id');?></span>
+                            <select name="category" id="category" class="form-control" onchange="duplicate_restrict()">
+                                <option value="">Choose Category</option>
+                                <?php
+                                if($category->code==SUCCESS_CODE)
+                                if(!empty($category->result))
+                                {
+                                  foreach($category->result as $key=>$value)
+                                  {
+                                    ?>
+                                    <option value="<?php echo $value->category_id; ?>" <?php if($value->category_id==$budgetedit->category_fid){ echo 'selected'; }?>>
+                                    <?php echo $value->category_name; ?>
+                                    </option>
+                                    <?php
+                                  }
+                                }
+                                ?>
+                            </select>
+                            <span id="duplicate-restrict" style="color:red"></span>
+                            <?php echo form_error('category'); ?>
+              </div>
+            </div>
+            <input type="hidden" name="editbudget" id="editbudget" value="<?php echo $budgetedit->budget_id;  ?>">
+            <div class="clearfix">&nbsp;</div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <?php echo form_label('Budget Type');
+                            ?>
+               <input type="text" name="budgetType" placeholder="Enter the budget" class="form-control" id="budgetType" value="<?php echo $budgetedit->budget_type; ?>">
+               <?php echo form_error('budgetType'); ?>
+               <span id="budget_type_error"></span>
+              </div>
+            </div>
+
+              <div class="clearfix"></div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <?php echo form_label('Budget Price');
+                            ?>
+               <input type="text" class="form-control" name="price" id="price" placeholder="Price" value="<?php echo $budgetedit->budget_price; ?>">
+               <?php echo form_error('price'); ?>
+              </div>
+            </div>
+
+            
+
+              <div class="clearfix"></div>
+            <div class="box-footer">
+                        <p class="success_msg"></p>
+              <?php echo form_submit('submit', 'Add', array('class' => 'btn btn-success', 'name' => 'btn_submit', 'id' => 'btn_submit')); ?>
+                        </div>
+
+             </div>
+            </div>
+            <?php echo form_close(); ?>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+     <footer class="main-footer">
+    <?php $this->load->view("superadmin/includes/footer");?>
+  </footer>
+  </div>
+  <!-- /.content-wrapper -->
+
+ 
+
+  <div class="control-sidebar-bg"></div>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 2.2.3 -->
+<script src="<?php echo SUPER_JS_PATH; ?>jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="<?php echo SUPER_JS_PATH; ?>bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="<?php echo SUPER_JS_PATH; ?>fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo SUPER_JS_PATH; ?>app.min.js"></script>
+<!-- Sparkline -->
+<script src="<?php echo SUPER_JS_PATH; ?>jquery.sparkline.min.js"></script>
+<!-- jvectormap -->
+<script src="<?php echo SUPER_JS_PATH; ?>jquery-jvectormap-1.2.2.min.js"></script>
+<script src="<?php echo SUPER_JS_PATH; ?>jquery-jvectormap-world-mill-en.js"></script>
+<!-- SlimScroll 1.3.0 -->
+<script src="<?php echo SUPER_JS_PATH; ?>jquery.slimscroll.min.js"></script>
+<!-- ChartJS 1.0.1 -->
+<script src="<?php echo SUPER_JS_PATH; ?>Chart.min.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="<?php echo SUPER_JS_PATH; ?>dashboard2.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?php echo SUPER_JS_PATH; ?>demo.js"></script>
+</body>
+</html>
+ <script>
+         $("#add_budget").on('submit',function(){
+           var budgetpatern=/^[A-Za-z ]*$/;
+           var pricepattern =/^(0|[1-9][0-9]*)$/;
+             var price=$('#price').val();
+            var category=$('#category').val();
+            var budgetType=$("#budgetType").val();
+            var str=true;
+      if(price==''|| price==' '){
+                str=false;
+                $('#price').css('border','1px solid red');
+                /*$('#price_err').css('color','red');
+                $('#price_err').html('Choose Price');*/
+            }
+            if(budgetType==''|| budgetType==' '){
+                str=false;
+                $('#budgetType').css('border','1px solid red');
+               /* $('#budget_type_error').css('color','red');
+                $('#budget_type_error').html('Enter budget type');*/
+            }
+            if(budgetType!="" && !budgetpatern.test(budgetType)){
+          $("#budgetType").css('border','1px solid red').focus();
+          /* $('#budget_type_error').css('color','red');
+                $('#budget_type_error').html('Invalid input');*/
+          str = false;
+          }
+          if(price!="" && !pricepattern.test(price)){
+          $("#price").css('border','1px solid red').focus();
+          /* $('#budget_type_error').css('color','red');
+                $('#budget_type_error').html('Invalid input');*/
+          str = false;
+          }
+            
+            if(category==''|| category==' '){
+                str=false;
+                $('#category').css('border','1px solid red');
+               /* $('#category_err').css('color','red');
+                $('#category_err').html('Choose category');*/
+            }
+             return str;
+         });
+    
+</script>
+<script type="text/javascript">
+ function duplicate_restrict() {
+    var category=$("#category").val();
+    if(category!='' && category!=0){
+      $.ajax({
+        url:'<?php echo base_url(); ?>superadmin/budget_controller/restrict_institute_category',
+        method:'POST',
+        dataType:'JSON',
+        data:{'category':category},
+        success:function(s){
+          console.log(s);
+          if(s.code==200){
+            $("#btn_submit").prop('disabled',true);
+          //  $('.enableOnInput').prop('disabled', true);
+          $("#category").css('border','1px solid red')
+          $("#duplicate-restrict").html(s.description);
+          }
+        },
+        error:function(e){
+          console.log(e);
+        }
+      });
+    }else{
+      alert('Please choose category');
+    }
+  } 
+
+</script>

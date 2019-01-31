@@ -1,0 +1,34 @@
+
+
+    <!-- jquery required -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+    <!-- the jquery.preloaders plugin -->
+    <script src="jquery.preloaders.js"></script>
+
+    <script>
+        $(function(){
+
+            // Advanced example
+            $('.example2').click(function(){
+
+                $.preloader.start({
+                    modal: true,
+                    src : '1.gif'
+                });
+
+                setTimeout(function(){
+                    $.preloader.stop();
+                }, 3000);
+
+            });
+
+        });
+    </script>
+   
+</head>
+<body>
+
+        <button class="btn btn-info example2">Test loading with modal</button>
+
+</body>
+</html>

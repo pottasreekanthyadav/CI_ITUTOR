@@ -1,0 +1,12 @@
+cUser-agent: *
+Allow: /
+Sitemap: http://itsmytutor.com/sitemap.xml
+
+
+
+
+
+
+
+
+
